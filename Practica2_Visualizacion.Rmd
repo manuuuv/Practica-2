@@ -182,7 +182,26 @@ ggsave("figure/Ejercicio2.pdf")
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio3.pdf``.
 
 ```{r Solucion ejercicio 3}
-
+#Vamos a cargar el fichero:
+load("data/iris_tidy.Rdata")
+str(iris.tidy)
+#Vemos que el conjunto de datos contiene 4 variables y 600 observaciones.
+#Creamos el grafico iris.grafico1:
+iris.grafico1 = ggplot(data=iris.tidy,aes(x=Species,y=Value))
+iris.grafico1 + geom_point()
+#Hacemos el grafico iris.grafico2 modificando el primero:
+iris.grafico2 = ggplot(data=iris.tidy,aes(x=Species,y=Value,col=Part))
+#Representamos el grafico iris.grafico2:
+iris.grafico2 + geom_point()
+#Represento el gráfico con facet_grid en forma de fila:
+ggplot(data=iris.tidy,aes(x=Species,y=Value,col=Part)) + geom_point() + facet_grid(Measure~.)
+#Represento el gráfico con facet_grid en forma de columna:
+ggplot(data=iris.tidy,aes(x=Species,y=Value,col=Part)) + geom_point() + facet_grid(.~Measure)
+#Se compara mejor las variables en forma de columna.
+#Cambiamos por geom_jitter:
+ggplot(data=iris.tidy,aes(x=Species,y=Value,col=Part)) + geom_jitter() + facet_grid(.~Measure)
+#Guardamos el gráfico:
+ggsave("figure/Ejercicio3.pdf")
 ```
 
 ## Gráficos de línea con **ggplot2**
