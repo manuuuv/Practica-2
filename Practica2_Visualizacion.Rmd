@@ -134,7 +134,19 @@ p2
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio1.pdf``.
 
 ```{r Solucion ejercicio 1}
-
+#Vamos a cargar el fichero utilizando la función load:
+load("data/weatherAUS.RData")
+#A continuación,creamos el objeto ggplot llamado como grafico1:
+grafico1 = ggplot(data=ds,aes(x=MinTemp,y=MaxTemp))
+#Definimos el objeto geométrico:
+grafico1 + geom_point()
+#Añadimos el color a una variable llamada grafico2:
+grafico2 = ggplot(data=ds,aes(x=MinTemp,y=MaxTemp,col=RainTomorrow))
+grafico2 + geom_point()
+#Ponemos una nueva capa con el título del gráfico y lo guardamos en la variable grafico3:
+grafico3 = ggplot(data=ds,aes(x=MinTemp,y=MaxTemp,col=RainTomorrow)) + ggtitle("Representaión de las temperaturas máximas y mínimas en función de si llueve mañana o no") + geom_point()
+#Guardamos el gráfico resultante en un fichero pdf:
+ggsave("Ejercicio1.pdf")
 ```
 
 ### **Ejercicio 2**
