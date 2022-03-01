@@ -359,10 +359,12 @@ En esta sección vamos a utilizar **ggplot2** para representar distribuciones de
 load("data/weatherAUS_distributions.RData")
 str(ds)
 #Creamos el boxplot:
-ggplot(data=ds,aes(x=Year,y=MinTemp))+ geom_boxplot(aes(col=RainToday))
+ggplot(data=ds,aes(x=Year,y=MinTemp,fill=Year))+ geom_boxplot()
 #Creamos el gráfico de violines:
-ggplot(data=ds,aes(x=Year,y=MaxTemp))+ geom_violin(aes(col=RainToday)) + ggtitle("Distribución de temperaturas máximas por año")
-
+ggplot(data=ds,aes(x=Year,y=MaxTemp,fill=Year))+ geom_violin() + labs(title="Distribución de temperaturas máximas por año",x="Año", y = "Temperatura (ºC)") 
+#Eliminamos la leyenda:
+ggplot(data = ds, aes(x=Year, y=MaxTemp, fill=Year))+ geom_violin() + labs(title="Distribución de temperaturas máximas por año",x="Año", y = "Temperatura (ºC)") +theme(legend.position='none', axis.text.x=element_text(angle=45, hjust=1))
+ggsave("figure/Ejercicio6.pdf")
 ```
 
 ## Histogramas con **ggplot2**
