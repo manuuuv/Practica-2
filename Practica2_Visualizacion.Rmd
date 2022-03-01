@@ -146,7 +146,7 @@ grafico2 + geom_point()
 #Ponemos una nueva capa con el título del gráfico y lo guardamos en la variable grafico3:
 grafico3 = ggplot(data=ds,aes(x=MinTemp,y=MaxTemp,col=RainTomorrow)) + ggtitle("Representaión de las temperaturas máximas y mínimas en función de si llueve mañana o no") + geom_point()
 #Guardamos el gráfico resultante en un fichero pdf:
-ggsave("Ejercicio1.pdf")
+ggsave("figure/Ejercicio1.pdf")
 ```
 
 ### **Ejercicio 2**
